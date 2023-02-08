@@ -1,9 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import type { AstroInstance } from "astro";
 
 // I wonder if we can sort these?
-const posts = await Astro.glob("../pages/patterns/*.astro");
+interface PatternProps extends AstroInstance {
+  meta: {
+    title: string;
+    description: string;
+    date: Date;
+    dateUpdated: Date;
+    draft: boolean;
+  };
+}
+
+const posts = await Astro.glob<PatternProps>("../pages/patterns/*.astro");
 ---
 
 <Layout title="Shape Playground">
@@ -20,7 +31,11 @@ const posts = await Astro.glob("../pages/patterns/*.astro");
                 .slice(-1)[0]
                 .replace(".astro", "")
                 .replace(/-/g, " ")}
-              body=""
+              body={
+                post.meta?.draft === true
+                  ? "Draft"
+                  : post.meta?.description || ""
+              }
             />
           </article>
         ))
