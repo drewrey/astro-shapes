@@ -3,16 +3,19 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Shape Playground">
-  <div class="box-border flex items-center p-3">
-    <div class="relative self-center">
-      <div class="absolute top-0 left-0 h-24 w-24 bg-sky-500 opacity-70"></div>
-      <div
-        class="absolute top-1 left-1 z-20 flex h-24 w-24 items-center justify-center bg-slate-700 text-center align-middle font-semibold text-gray-300"
-      >
-        chromatic abberation
-      </div>
-      <div class="absolute top-2 left-2 z-10 h-24 w-24 bg-rose-400 opacity-70">
-      </div>
+  <div class="relative m-3 flex">
+    <div
+      class="absolute top-0 left-0 flex h-24 w-24 rounded-md bg-sky-500 opacity-70"
+    >
+    </div>
+    <div
+      class="absolute top-2 left-2 z-20 flex h-24 w-24 items-center rounded-md bg-slate-700 text-center font-semibold text-gray-300"
+    >
+      chromatic abberation
+    </div>
+    <div
+      class="absolute top-4 left-4 z-10 flex h-24 w-24 rounded-md bg-rose-400 opacity-70"
+    >
     </div>
   </div>
 </Layout>
