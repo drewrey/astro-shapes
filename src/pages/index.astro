@@ -1,20 +1,32 @@
 ---
+import type { AstroInstance } from "astro";
+import { z } from "astro:content";
+
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-import type { AstroInstance } from "astro";
+
+const patternSchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  date: z.string().optional(),
+  dateUpdated: z.string().optional(),
+  isDraft: z.boolean(),
+});
 
 // I wonder if we can sort these?
 interface PatternProps extends AstroInstance {
-  meta: {
-    title: string;
-    description: string;
-    date: Date;
-    dateUpdated: Date;
-    draft: boolean;
-  };
+  meta: typeof patternSchema;
 }
 
 const posts = await Astro.glob<PatternProps>("../pages/patterns/*.astro");
+
+posts.map((p) => {
+  console.log("meta is ", p?.meta || "");
+  console.log("parse is ", patternSchema.safeParse(p?.meta || ""));
+  console.log(p.meta?.description);
+  // TODO: why am I getthing a type error when accesing isDraft but not description?
+  console.log(p.meta?.isDraft);
+});
 ---
 
 <Layout title="Shape Playground">
@@ -32,7 +44,7 @@ const posts = await Astro.glob<PatternProps>("../pages/patterns/*.astro");
                 .replace(".astro", "")
                 .replace(/-/g, " ")}
               body={
-                post.meta?.draft === true
+                post.meta?.isDraft === true
                   ? "Draft"
                   : post.meta?.description || ""
               }
