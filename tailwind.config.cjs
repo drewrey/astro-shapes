@@ -5,7 +5,13 @@ var flattenColorPalette =
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ["Garamond", "serif"],
+        sans: ["system-ui", "sans-serif"],
+        mono: ["Menlo", "Monaco", "Lucida Console", "ans-serif"],
+      },
+    },
   },
   plugins: [
     ({ addUtilities, e, theme, variants }) => {
