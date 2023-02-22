@@ -10,7 +10,7 @@ const patternSchema = z.object({
   description: z.string().optional(),
   date: z.string().optional(),
   dateUpdated: z.string().optional(),
-  isDraft: z.boolean(),
+  isDraft: z.boolean().default(false),
 });
 
 // I wonder if we can sort these?
@@ -24,18 +24,18 @@ posts.map((p) => {
   console.log("meta is ", p?.meta || "");
   console.log("parse is ", patternSchema.safeParse(p?.meta || ""));
   console.log(p.meta?.description);
+  console.log(p.meta?.date);
   // TODO: why am I getthing a type error when accesing isDraft but not description?
   console.log(p.meta?.isDraft);
 });
 ---
 
 <Layout title="Shape Playground">
-  <main>
-    <h1>Welcome to <span class="text-green-800">Shape Playground</span></h1>
-    <ul role="list" class="grid gap-1 p-0">
-      {
-        posts.map((post) => (
-          <article>
+  <main class="flex flex-col">
+    <div class="self-center text-5xl">
+      <ul role="list" class="m-5 flex-row p-3">
+        {
+          posts.map((post) => (
             <Card
               href={post.url || ""}
               title={post.file
@@ -43,15 +43,12 @@ posts.map((p) => {
                 .slice(-1)[0]
                 .replace(".astro", "")
                 .replace(/-/g, " ")}
-              body={
-                post.meta?.isDraft === true
-                  ? "Draft"
-                  : post.meta?.description || ""
-              }
+              body={post.meta?.description || ""}
+              isDraft={post.meta?.isDraft || false}
             />
-          </article>
-        ))
-      }
-    </ul>
+          ))
+        }
+      </ul>
+    </div>
   </main>
 </Layout>

@@ -3,21 +3,36 @@ export interface Props {
   title: string;
   body: string;
   href: string;
+  isDraft: boolean;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, isDraft } = Astro.props;
 ---
 
 <li class="link-card">
   <a href={href}>
-    <div class="m-3 rounded-md bg-slate-50 p-3">
-      <h2>
-        {title}
-        <span>&rarr;</span>
-      </h2>
-      <p>
-        {body}
-      </p>
+    <div class="m-3 flex-col rounded-md bg-slate-50 p-3">
+      <div class="flex flex-row">
+        <h2 class="font-semibold">
+          {title}
+          {
+            isDraft && (
+              <span
+                class="text-sm font-normal text-slate-400"
+                title="In Progress"
+              >
+                &nbsp;🚧
+              </span>
+            )
+          }
+          <span>&rarr;</span>
+        </h2>
+      </div>
+      <div class="flex flex-row">
+        <p>
+          {body}
+        </p>
+      </div>
     </div>
   </a>
 </li>
