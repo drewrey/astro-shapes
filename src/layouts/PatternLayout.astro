@@ -9,9 +9,15 @@ const { title } = Astro.props;
 ---
 
 <Layout title={title}>
-  <nav>
-    <a href="/">Back to homepage</a>
-  </nav>
-  <hr class="h-10" />
+  <div class="flex flex-grow justify-between pt-2 pb-5">
+    <nav class="pl-3">
+      <a href="/" class="underline underline-offset-2">Back to homepage</a>
+    </nav>
+    <div class="pr-3">
+      <a href="/">
+        <span class="flex-justify-right">▪️</span>
+      </a>
+    </div>
+  </div>
   <slot />
 </Layout>
