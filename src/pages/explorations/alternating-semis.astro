@@ -1,0 +1,27 @@
+---
+import PatternLayout from "../../layouts/PatternLayout.astro";
+
+export const meta = {
+  title: "Background Shadow",
+  description:
+    "Alternating half-rounded squares that could be a nice logo/artistic element on a page. Inspired by dotted-border",
+  isDraft: true,
+};
+---
+
+<PatternLayout title="Shape Playground">
+  <div class="flex content-center justify-center">
+    <div class="m-4 h-1/2 w-1/2 p-10">
+      <div
+        class="aspect-square h-1/2 w-1/2 flex-col rounded-l-full bg-blue-400"
+      >
+      </div>
+      <div class="aspect-square h-1/2 w-1/2 flex-col rounded-r-full bg-red-300">
+      </div>
+      <div
+        class="aspect-square h-1/2 w-1/2 flex-col rounded-l-full bg-gray-700"
+      >
+      </div>
+    </div>
+  </div>
+</PatternLayout>

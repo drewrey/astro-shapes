@@ -1,0 +1,67 @@
+---
+import PatternLayout from "../../layouts/PatternLayout.astro";
+export const meta = {
+  title: "Colorful Header",
+  description: "Stumbled upon this when working on Bowed Edges",
+  refereneceUrl: "",
+  isDraft: true,
+};
+---
+
+<PatternLayout title="Shape Playground">
+  <!-- TODO: increase # of columns to absurdity -->
+  <!-- <div class="grid grid-cols-[200px_minmax(0px,_1fr)_100px] gap-1">BLEH</div> -->
+  <div class="m-4 p-3">
+    <div class="grid-cols-25 grid">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar-1">&nbsp;</div>
+      <div class="bar-2">&nbsp;</div>
+      <div class="bar">&nbsp;</div>
+      <!-- tailwind class with border -->
+    </div>
+    <div class="border-2 border-solid border-black p-3">I'm a table</div>
+  </div>
+</PatternLayout>
+
+<style>
+  [class*="bar"] {
+    grid-row-start: 1;
+    /* TODO: fix this end */
+    grid-row-end: 30;
+    background-color: #ff4136;
+    max-width: 100%;
+  }
+
+  /**
+    /* I think these look cool without the box shadow shenanigans.
+    /* Was playing around to see if I get them to look like an offset toggle switch.
+    */
+  .bar-1 {
+    background-color: #0074d9;
+  }
+  .bar-2 {
+    background-color: #2ecc40;
+  }
+</style>
