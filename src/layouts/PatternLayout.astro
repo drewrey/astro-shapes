@@ -30,8 +30,8 @@ function getFilePathForGithub(pathname: string) {
 
 <Layout title={title}>
   <div class="flex flex-grow justify-between pt-2 pb-5">
-    <div class="pl-3">
-      <a href="/">
+    <nav class="pl-3" aria-label="main site menu">
+      <a href="/" aria-label="go to home page">
         <span class="flex-justify-right">▪️</span>
         <span class={`${isHome ? "underline underline-offset-2" : ""}`}>
           home</span
@@ -40,14 +40,14 @@ function getFilePathForGithub(pathname: string) {
       <a
         href="/patterns"
         class={`${isPatterns ? "underline underline-offset-2" : ""}`}
-        >patterns</a
+        aria-label="go to patterns page">patterns</a
       >
       <a
         href="/explorations"
         class={`${isExplorations ? "underline underline-offset-2" : ""}`}
-        >explorations</a
+        aria-label="go to explorations page">explorations</a
       >
-    </div>
+    </nav>
     <div class="pr-3">
       <a
         href={`https://github.com/drewrey/patterns/blob/main/src/pages${getFilePathForGithub(
