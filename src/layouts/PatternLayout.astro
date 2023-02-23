@@ -6,14 +6,29 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+// I think that the URL should be available without needing to construct it?
+const { pathname } = new URL(Astro.request.url);
+
+const isHome = pathname === "/";
+const isPatterns = pathname.startsWith("/patterns");
+const isExplorations = pathname.startsWith("/explorations");
 ---
 
 <Layout title={title}>
   <div class="flex flex-grow justify-between pt-2 pb-5">
     <nav class="pl-3">
-      <a href="/" class="underline underline-offset-2">home</a>
-      <a href="/patterns" class="underline underline-offset-2">patterns</a>
-      <a href="/explorations" class="underline underline-offset-2"
+      <a href="/" class={`${isHome ? "underline underline-offset-2" : ""}`}
+        >home</a
+      >
+      <a
+        href="/patterns"
+        class={`${isPatterns ? "underline underline-offset-2" : ""}`}
+        >patterns</a
+      >
+      <a
+        href="/explorations"
+        class={`${isExplorations ? "underline underline-offset-2" : ""}`}
         >explorations</a
       >
     </nav>
