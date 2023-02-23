@@ -26,9 +26,7 @@ const { href, title, body, isDraft } = Astro.props;
         </h2>
       </div>
       <div class="flex flex-row">
-        <p>
-          {body}
-        </p>
+        <p set:html={body} />
       </div>
     </div>
   </a>

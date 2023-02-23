@@ -2,9 +2,15 @@
 import PatternLayout from "../../layouts/PatternLayout.astro";
 export const meta = {
   title: "Colorful Header",
-  description: "Stumbled upon this when working on Bowed Edges",
+  // Not sure if I like this method to link patterns manually
+  // - One benefit is that I can add some exposition
+  // - A downside is manual styling, etc
+  // - Would be easier to programmatically use it if separate (e.g. show related on the relevant page)
+  description:
+    "Stumbled upon this when working on <a href='/patterns/bowed-edges' class='underline'>Bowed Edges</a>",
   refereneceUrl: "",
   isDraft: true,
+  related: ["patterns/bowed-edges"],
 };
 ---
 
