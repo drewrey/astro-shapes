@@ -1,0 +1,55 @@
+---
+import PatternLayout from "../../layouts/PatternLayout.astro";
+
+export const meta = {
+  title: "Repeated Shape",
+  description: "Repeating the shape behind it to simulate a 3D effect.",
+  date: "2023-02-07",
+  dateUpdated: "2023-02-23",
+  referenceUrl:
+    "https://anthonyhobday.com/sideprojects/visualtechniques/techniques/other/repeated-shape-for-depth.html",
+  isDraft: false,
+};
+
+// The exploration of color here reminds me of Joseph Albers' _Interaction of Color_. In particular, how the oranges can
+// appear to change shade because of the color that's shown behind/next to it.
+// We explored that interaction with construction paper. Perhaps I should include some photos of that here.
+---
+
+<PatternLayout title="Shape Playground">
+  <div class="h-screen bg-blue-300">
+    <div
+      class="flex-col-1 relative flex h-1/2 items-center justify-center bg-blue-300"
+    >
+      <div class="ml-4 mr-4 w-80 flex-row align-middle">
+        <div
+          class="border-r-1 absolute z-20 -mt-5 h-28 w-40 rounded-lg bg-white"
+        >
+        </div>
+        <div class="relative z-10 ml-2 h-24 w-36 rounded-lg bg-gray-200"></div>
+      </div>
+      <div class="flex w-80 flex-row align-middle">
+        <div
+          class="border-r-1 bg- absolute z-20 -mt-5 h-28 w-40 rounded-lg bg-orange-300"
+        >
+        </div>
+        <div class="relative z-10 ml-2 h-24 w-36 rounded-lg bg-orange-400">
+        </div>
+      </div>
+    </div>
+    <div class="flex-col-1 relative flex h-1/2 items-center justify-center">
+      <div class="flex w-80 flex-row align-middle">
+        <div class="absolute z-20 -mt-5 h-28 w-40 rounded-lg bg-gray-100"></div>
+        <div class="relative z-10 ml-2 h-24 w-36 rounded-lg bg-gray-400"></div>
+      </div>
+      <div class="flex w-80 flex-row align-middle">
+        <div
+          class="border-r-1 bg- absolute z-20 -mt-5 h-28 w-40 rounded-lg bg-orange-300"
+        >
+        </div>
+        <div class="relative z-10 ml-2 h-24 w-36 rounded-lg bg-orange-500">
+        </div>
+      </div>
+    </div>
+  </div>
+</PatternLayout>
