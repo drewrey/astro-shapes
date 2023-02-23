@@ -17,15 +17,12 @@ const { href, title, body, isDraft } = Astro.props;
           {title}
           {
             isDraft && (
-              <span
-                class="text-sm font-normal text-slate-400"
-                title="In Progress"
-              >
-                &nbsp;🚧
+              <span class="text-slate-400" title="In Progress">
+                🚧
               </span>
             )
           }
-          <span>&rarr;</span>
+          <span class="justify flex-justify-right">&rarr;</span>
         </h2>
       </div>
       <div class="flex flex-row">
