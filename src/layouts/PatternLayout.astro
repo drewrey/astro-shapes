@@ -17,13 +17,15 @@ const isExplorations = pathname.startsWith("/explorations");
 function getFilePathForGithub(pathname: string) {
   switch (pathname) {
     case "/patterns":
+    case "/patterns/":
       return "/patterns/index";
     case "/explorations":
+    case "/explorations/":
       return "/explorations/index";
     case "/":
       return "/index";
     default:
-      return pathname;
+      return pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
   }
 }
 ---
