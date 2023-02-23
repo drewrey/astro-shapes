@@ -13,14 +13,30 @@ const { pathname } = new URL(Astro.request.url);
 const isHome = pathname === "/";
 const isPatterns = pathname.startsWith("/patterns");
 const isExplorations = pathname.startsWith("/explorations");
+
+function getFilePathForGithub(pathname: string) {
+  switch (pathname) {
+    case "/patterns":
+      return "/patterns/index";
+    case "/explorations":
+      return "/explorations/index";
+    case "/":
+      return "/index";
+    default:
+      return pathname;
+  }
+}
 ---
 
 <Layout title={title}>
   <div class="flex flex-grow justify-between pt-2 pb-5">
-    <nav class="pl-3">
-      <a href="/" class={`${isHome ? "underline underline-offset-2" : ""}`}
-        >home</a
-      >
+    <div class="pl-3">
+      <a href="/">
+        <span class="flex-justify-right">▪️</span>
+        <span class={`${isHome ? "underline underline-offset-2" : ""}`}>
+          home</span
+        >
+      </a>
       <a
         href="/patterns"
         class={`${isPatterns ? "underline underline-offset-2" : ""}`}
@@ -31,10 +47,15 @@ const isExplorations = pathname.startsWith("/explorations");
         class={`${isExplorations ? "underline underline-offset-2" : ""}`}
         >explorations</a
       >
-    </nav>
-    <div class="pr-3">
-      <a href="/">
-        <span class="flex-justify-right">▪️</span>
+    </div>
+    <div class="flex-justify-right pr-3">
+      <a
+        href={`https://github.com/drewrey/patterns/blob/main/src/pages${getFilePathForGithub(
+          pathname
+        )}.astro`}
+        target="_blank"
+        rel="noopener noreferrer"
+        >edit on github
       </a>
     </div>
   </div>
