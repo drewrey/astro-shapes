@@ -13,15 +13,6 @@ interface PatternProps extends AstroInstance {
 }
 
 const posts = await Astro.glob<PatternProps>("./*.astro");
-
-posts.map((p) => {
-  console.log("meta is ", p?.meta || "");
-  console.log("parse is ", patternSchema.safeParse(p?.meta || ""));
-  console.log(p.meta?.description);
-  console.log(p.meta?.date);
-  // TODO: why am I getthing a type error when accesing isDraft but not description?
-  console.log(p.meta?.isDraft);
-});
 ---
 
 <PatternLayout title="Shape Playground">
@@ -34,6 +25,7 @@ posts.map((p) => {
               href={post.url || ""}
               title={parseFileName(post.file)}
               body={post.meta?.description || ""}
+              // TODO: why am I getthing a type error when accesing isDraft but not description?
               isDraft={post.meta?.isDraft || false}
             />
           ))
